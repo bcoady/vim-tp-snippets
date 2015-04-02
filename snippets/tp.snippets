@@ -1,0 +1,97 @@
+# MOTION COMMANDS
+snippet J
+	:J P[${1:POINT}] ${2:100}% 
+snippet JJ
+	:J P[${1:POINT}] 100% FINE;
+
+snippet L
+	:L P[${1:POINT}] 
+snippet LL
+	:J P[${1:POINT}] max_speed FINE;
+
+snippet M
+	max_speed 
+snippet S
+	${1:4000}mm/sec 
+snippet F
+	FINE 
+snippet C
+	CNT${1:100} 
+snippet V
+	VOFFSET,VR[${1:1}] 
+snippet T
+	Tool_Offset,PR[${1}] 
+snippet O
+	Offset,PR[${1}] 
+snippet AP
+	AP_LD${1:50} 
+snippet RT
+	RT_LD${1:50} 
+# BRANCHING STATEMENTS
+snippet LB
+	:  LBL[${1}];
+
+snippet JL
+	:  JMP LBL[${1}];
+
+snippet FO
+	:  FOR R[${1}]=${2} TO ${3};
+
+snippet EF
+	:  ENDFOR;
+
+snippet E
+	:  END;
+
+snippet SE
+	:  SELECT R[${1}]=${2},JMP LBL[${3}];
+
+snippet =
+	:         =${1},JMP LBL[${2}];
+
+snippet EL
+	:         ELSE,JMP LBL[${1}];
+
+# FRAMES
+snippet UF
+	:  UFRAME_NUM=${1};
+
+snippet UT
+	:  UTOOL_NUM=${1};
+
+# REGISTERS
+snippet PR
+	:  PR[${1}]=
+snippet PRN
+	:  PR[${1:}]=PR[$1]-PR[$1];
+
+snippet R
+	:  R[${1}]=
+snippet R
+	:  R[${1:}]=0; 
+
+
+# COMMENTS
+snippet -
+	:  --eg:${1};
+
+snippet !
+	:  !${1:Single Line comments max size  |};
+
+# MISC
+snippet NEW
+	/PROG  ${1:NAME}
+	/ATTR
+	/APPL
+
+	AUTO_SINGULARITY_HEADER;
+	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+	/MN
+	:  !Initialize Data;
+	:  UFRAME_NUM=${2};
+	:  UTOOL_NUM=${3};
+	/POS
+	/END
+snippet W
+	:  WAIT    ${1}(sec);
+

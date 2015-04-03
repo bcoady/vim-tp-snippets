@@ -52,6 +52,15 @@ snippet =
 snippet EL
 	:         ELSE,JMP LBL[${1}];
 
+snippet IF
+	:  IF ${1},JMP LBL[${2}]:
+
+snippet CA
+	:  CALL ${1};
+
+snippet RU
+	:  RUN ${1};
+
 # FRAMES
 snippet UF
 	:  UFRAME_NUM=${1};
@@ -67,9 +76,8 @@ snippet PRN
 
 snippet R
 	:  R[${1}]=
-snippet R
+snippet RN
 	:  R[${1:}]=0; 
-
 
 # COMMENTS
 snippet -
@@ -78,7 +86,7 @@ snippet -
 snippet !
 	:  !${1:Single Line comments max size  |};
 
-# MISC
+# NEW HEADING
 snippet NEW
 	/PROG  ${1:NAME}
 	/ATTR
@@ -90,8 +98,16 @@ snippet NEW
 	:  !Initialize Data;
 	:  UFRAME_NUM=${2};
 	:  UTOOL_NUM=${3};
+	
 	/POS
 	/END
+# WAIT COMMANDS
 snippet W
 	:  WAIT    ${1}(sec);
+
+snippet WT
+	:  $WAITTMOUT=(${1}) ;
+
+snippet WTL
+	:  WAIT ${1} TIMEOUT,LBL[${2}];
 

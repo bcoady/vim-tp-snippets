@@ -4,7 +4,7 @@ A snippet file of commonly used FANUC TP commands
 
 ## Installing and Using
 
-- Install [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) into '\vimfiles\autoload' and add the
+- Install [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) into `\vimfiles\autoload` and add the
    following line to your `_vimrc`:
 
         call pathogen#infect()
@@ -19,10 +19,10 @@ A snippet file of commonly used FANUC TP commands
         "ctrl-6 is the new Caps Lock for insert mode only
         " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
         for c in range(char2nr('A'), char2nr('Z'))
-         execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
-         execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
-         endfor
-         :set iminsert=1
+        execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+        execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+        endfor
+        :set iminsert=1
          
       
 

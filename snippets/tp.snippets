@@ -1,14 +1,12 @@
 # MOTION COMMANDS
 snippet J
-	:J P[${1:POINT}] ${2:100}% 
+	:J P[${1}] ${2:100}% 
 snippet JJ
-	:J P[${1:POINT}] 100% FINE;
-
+	:J P[${1}] 100% FINE;
 snippet L
-	:L P[${1:POINT}] 
+	:L P[${1}] 
 snippet LL
-	:J P[${1:POINT}] max_speed FINE;
-
+	:L P[${1}] max_speed FINE;
 snippet M
 	max_speed 
 snippet S
@@ -30,62 +28,45 @@ snippet RT
 # BRANCHING STATEMENTS
 snippet LB
 	:  LBL[${1}];
-
 snippet JL
 	:  JMP LBL[${1}];
-
 snippet FO
 	:  FOR R[${1}]=${2} TO ${3};
-
 snippet EF
 	:  ENDFOR;
-
 snippet E
 	:  END;
-
 snippet SE
 	:  SELECT R[${1}]=${2},JMP LBL[${3}];
-
 snippet =
 	:         =${1},JMP LBL[${2}];
-
 snippet EL
 	:         ELSE,JMP LBL[${1}];
-
 snippet IF
-	:  IF ${1},JMP LBL[${2}]:
-
+	:  IF ${1},JMP LBL[${2}];
 snippet CA
 	:  CALL ${1};
-
 snippet RU
 	:  RUN ${1};
-
 # FRAMES
 snippet UF
 	:  UFRAME_NUM=${1};
-
 snippet UT
 	:  UTOOL_NUM=${1};
-
 # REGISTERS
 snippet PR
 	:  PR[${1}]=
 snippet PRN
 	:  PR[${1:}]=PR[$1]-PR[$1];
-
 snippet R
 	:  R[${1}]=
 snippet RN
 	:  R[${1:}]=0; 
-
 # COMMENTS
 snippet -
 	:  --eg:${1};
-
 snippet !
 	:  !${1:Single Line comments max size  |};
-
 # NEW HEADING
 snippet NEW
 	/PROG  ${1:NAME}
@@ -104,10 +85,7 @@ snippet NEW
 # WAIT COMMANDS
 snippet W
 	:  WAIT    ${1}(sec);
-
 snippet WT
-	:  $WAITTMOUT=(${1}) ;
-
+	:  $WAITTMOUT=(${1});
 snippet WTL
 	:  WAIT ${1} TIMEOUT,LBL[${2}];
-

@@ -1,16 +1,34 @@
 # MOTION COMMANDS
 snippet J
-	:J P[${1}] ${2:100}% 
-snippet JJ
-	:J P[${1}] 100% FINE;
+	:J P[${1}] 
+snippet JF
+	:J P[${1}] ${2:100}% FINE 
+snippet JC
+	:J P[${1}] ${2:100}% CNT${3:100} 
 snippet L
 	:L P[${1}] 
-snippet LL
-	:L P[${1}] max_speed FINE;
+snippet LF
+	:L P[${1}] ${2:2000}mm/sec FINE 
+snippet LC
+	:L P[${1}] ${2:2000}mm/sec CNT${3:100} 
+snippet LW
+	:L P[${1}] max_speed FINE Wjnt 
+snippet A
+	:A P[${1}] 
+snippet AF
+	:A P[${1}] ${2:2000}mm/sec FINE 
+snippet AC
+	:A P[${1}] ${2:2000}mm/sec CNT${3:100} 
+snippet CF
+	:C P[${1}]
+	:  P[${2}] ${3:2000}mm/sec FINE 
+snippet CC
+	:C P[${1}]
+	:  P[${2}] ${3:2000}mm/sec CNT${4:100} 
 snippet M
 	max_speed 
 snippet S
-	${1:4000}mm/sec 
+	${1:2000}mm/sec 
 snippet F
 	FINE 
 snippet C
@@ -43,11 +61,15 @@ snippet =
 snippet EL
 	:         ELSE,JMP LBL[${1}];
 snippet IF
+	:  IF ${1},
+snippet IFJ
 	:  IF ${1},JMP LBL[${2}];
+snippet IFC
+	:  IF ${1},CALL 
 snippet CA
-	:  CALL ${1};
+	:  CALL 
 snippet RU
-	:  RUN ${1};
+	:  RUN 
 # FRAMES
 snippet UF
 	:  UFRAME_NUM=${1};
@@ -64,22 +86,50 @@ snippet RN
 	:  R[${1:}]=0; 
 # COMMENTS
 snippet -
-	:  --eg:${1};
+	:  --eg:
 snippet !
 	:  !${1:Single Line comments max size  |};
 # NEW HEADING
-snippet NEW
+snippet PROG
 	/PROG  ${1:NAME}
 	/ATTR
+	DEFAULT_GROUP	= 1,*,*,*,*;
 	/APPL
 
 	AUTO_SINGULARITY_HEADER;
 	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
 	/MN
-	:  !Initialize Data;
+	:  !Initial Settings ;
 	:  UFRAME_NUM=${2};
 	:  UTOOL_NUM=${3};
 	
+	/POS
+	/END
+snippet MACRO
+	/PROG  ${1:NAME}	  Macro
+	/ATTR
+	DEFAULT_GROUP	= 1,*,*,*,*;
+	/APPL
+
+	AUTO_SINGULARITY_HEADER;
+	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+	/MN
+	:  !Initial Settings ;
+	:  UFRAME_NUM=${2};
+	:  UTOOL_NUM=${3};
+	
+	/POS
+	/END
+snippet COND
+	/PROG  ${1:NAME}	  Cond
+	/ATTR
+	DEFAULT_GROUP	= *,*,*,*,*;
+	/APPL
+
+	AUTO_SINGULARITY_HEADER;
+	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+	/MN
+	:  WHEN ${2},CALL ${3} ;	
 	/POS
 	/END
 # WAIT COMMANDS

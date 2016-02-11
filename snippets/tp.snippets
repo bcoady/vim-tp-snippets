@@ -1,30 +1,56 @@
 # MOTION COMMANDS
 snippet J
 	:J P[${1}] 
+snippet JPR
+	:J PR[${1}] 
 snippet JF
 	:J P[${1}] ${2:100}% FINE 
+snippet JPRF
+	:J PR[${1}] ${2:100}% FINE 
 snippet JC
 	:J P[${1}] ${2:100}% CNT${3:100} 
+snippet JPRC
+	:J PR[${1}] ${2:100}% CNT${3:100} 
 snippet L
 	:L P[${1}] 
+snippet LPR
+	:L PR[${1}] 
 snippet LF
 	:L P[${1}] ${2:2000}mm/sec FINE 
+snippet LPRF
+	:L PR[${1}] ${2:2000}mm/sec FINE 
 snippet LC
 	:L P[${1}] ${2:2000}mm/sec CNT${3:100} 
+snippet LPRC
+	:L PR[${1}] ${2:2000}mm/sec CNT${3:100} 
 snippet LW
 	:L P[${1}] max_speed FINE Wjnt 
+snippet LPRW
+	:L Pr[${1}] max_speed FINE Wjnt 
 snippet A
 	:A P[${1}] 
+snippet APR
+	:A PR[${1}] 
 snippet AF
 	:A P[${1}] ${2:2000}mm/sec FINE 
+snippet APRF
+	:A PR[${1}] ${2:2000}mm/sec FINE 
 snippet AC
 	:A P[${1}] ${2:2000}mm/sec CNT${3:100} 
+snippet APRC
+	:A PR[${1}] ${2:2000}mm/sec CNT${3:100} 
 snippet CF
 	:C P[${1}]
 	:  P[${2}] ${3:2000}mm/sec FINE 
+snippet CPRF
+	:C PR[${1}]
+	:  PR[${2}] ${3:2000}mm/sec FINE 
 snippet CC
 	:C P[${1}]
 	:  P[${2}] ${3:2000}mm/sec CNT${4:100} 
+snippet CPRC
+	:C PR[${1}]
+	:  PR[${2}] ${3:2000}mm/sec CNT${4:100} 
 snippet M
 	max_speed 
 snippet S
@@ -46,26 +72,36 @@ snippet RT
 # BRANCHING STATEMENTS
 snippet LB
 	:  LBL[${1}];
+	${0}
 snippet JL
 	:  JMP LBL[${1}];
+	${0}
 snippet FO
 	:  FOR R[${1}]=${2} TO ${3};
+	${0}
 snippet EF
 	:  ENDFOR;
+	${0}
 snippet E
 	:  END;
+	${0}
 snippet SE
 	:  SELECT R[${1}]=${2},JMP LBL[${3}];
+	${0}
 snippet =
 	:         =${1},JMP LBL[${2}];
+	${0}
 snippet EL
 	:         ELSE,JMP LBL[${1}];
+	${0}
 snippet IF
 	:  IF ${1},
 snippet IFJ
 	:  IF ${1},JMP LBL[${2}];
+	${0}
 snippet IFC
-	:  IF ${1},CALL 
+	:  IF ${1},CALL ${2};
+	${0}
 snippet CA
 	:  CALL 
 snippet RU
@@ -73,69 +109,78 @@ snippet RU
 # FRAMES
 snippet UF
 	:  UFRAME_NUM=${1};
+	${0}
 snippet UT
 	:  UTOOL_NUM=${1};
+	${0}
 # REGISTERS
 snippet PR
 	:  PR[${1}]=
 snippet PRN
 	:  PR[${1:}]=PR[$1]-PR[$1];
+	${0}
 snippet R
 	:  R[${1}]=
 snippet RN
 	:  R[${1:}]=0; 
+	${0}
 # COMMENTS
 snippet -
 	:  --eg:
 snippet !
 	:  !${1:Single Line comments max size  |};
+	${0}
 # NEW HEADING
 snippet PROG
 	/PROG  ${1:NAME}
 	/ATTR
-	DEFAULT_GROUP	= 1,*,*,*,*;
+	COMMENT		= "${2}";
+	DEFAULT_GROUP	= ${3:1},*,*,*,*;
 	/APPL
 
 	AUTO_SINGULARITY_HEADER;
 	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
 	/MN
-	:  !Initial Settings ;
-	:  UFRAME_NUM=${2};
-	:  UTOOL_NUM=${3};
-	
+	${0}
 	/POS
 	/END
 snippet MACRO
 	/PROG  ${1:NAME}	  Macro
 	/ATTR
-	DEFAULT_GROUP	= 1,*,*,*,*;
+	COMMENT		= "${2}";
+	DEFAULT_GROUP	= ${3:1},*,*,*,*;
 	/APPL
 
 	AUTO_SINGULARITY_HEADER;
 	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
 	/MN
-	:  !Initial Settings ;
-	:  UFRAME_NUM=${2};
-	:  UTOOL_NUM=${3};
-	
+	${0}
 	/POS
 	/END
 snippet COND
 	/PROG  ${1:NAME}	  Cond
 	/ATTR
+	COMMENT		= "${2}";
 	DEFAULT_GROUP	= *,*,*,*,*;
 	/APPL
 
 	AUTO_SINGULARITY_HEADER;
 	  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
 	/MN
-	:  WHEN ${2},CALL ${3} ;	
+	:  WHEN ${3},CALL ${4} ;
+	${0}
 	/POS
 	/END
 # WAIT COMMANDS
 snippet W
-	:  WAIT    ${1}(sec);
+	:  WAIT (${1});
+	${0}
+snippet WS
+	:  WAIT    ${1:1.00}(sec);
+	${0}
+snippet WL
+	:  WAIT (${1}) TIMEOUT,LBL[${2}];
+	${0}
 snippet WT
-	:  $WAITTMOUT=(${1});
-snippet WTL
-	:  WAIT ${1} TIMEOUT,LBL[${2}];
+	:  $WAITTMOUT=(${1:100});
+	${0}

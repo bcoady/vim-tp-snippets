@@ -11,7 +11,7 @@ A snippet file of commonly used FANUC TP commands
 
 - Install [snipmate](https://github.com/garbas/vim-snipmate.git) into `vimfiles\bundle`
 
-- Add the snippets folder to `\vimfiles`
+- Add the snippets folder to `\vimfiles\bundle\vim-snipmate-master`
    Note: the snippets are in all caps. Adding the following to your `_vimrc` will give you a separate caps-lock while in insert mode:
 
       

@@ -2,6 +2,8 @@
 
 A snippet file of commonly used FANUC TP commands
 
+This snippet file is now included in [tpDev](https://github.com/bcoady/tpDev)
+
 ## Installing and Using
 
 - Install [pathogen](http://www.vim.org/scripts/script.php?script_id=2332) into `\vimfiles\autoload` and add the
